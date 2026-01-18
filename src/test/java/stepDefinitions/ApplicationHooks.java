@@ -70,14 +70,5 @@ public class ApplicationHooks {
 		}
 	}
 	
-	
-	
-	/*
-	 * @After(order=1) public void screenshot(Scenario scenario) {
-	 * if(scenario.isFailed()) { String
-	 * screenshotName=scenario.getName().replace(" ", "_"); byte [] sourcePath=
-	 * ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-	 * scenario.attach(sourcePath, "image/png", screenshotName); } }
-	 */
 
 }
