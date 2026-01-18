@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class LoginPage {
@@ -46,12 +45,6 @@ private WebDriver driver;
     public CatagoriesPage doLogin(String username, String password)
     {
     	driver.findElement(loginLink).click();
-    	
-		/*
-		 * Select select = new Select(driver.findElement(loginButton)); List<WebElement>
-		 * list=select.getAllSelectedOptions();
-		 */
-    	//select.
     	System.out.println("login with "+username+ "and "+password);
     	driver.findElement(emailIDtxt).sendKeys(username);
     	driver.findElement(passwordtxt).sendKeys(password);
