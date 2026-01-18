@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Cucumber with parallel testing" parallel="classes" verbose="5" thread-count="3">
+  <test name="Different testNG features test">
+    <classes>
+      <class name="testRunners.MyTestRunner"/>
+     
+     <!-- <class name="com.test.TestNGBasics"/>
+      <class name="com.test.InvocationCountTest"/>
+      <class name="com.test.ExceptionTimeOutTest"/>-->
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
