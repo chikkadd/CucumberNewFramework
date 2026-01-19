@@ -7,5 +7,8 @@ public class ScreenshotHook {
 	
 	public static final Logger LOG= LogManager.getLogger(ScreenshotHook.class);
 	
-
+	public void test()
+	{
+		System.out.println("some challenges to implement this");
+	}
 }
