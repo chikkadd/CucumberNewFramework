@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import java.io.File;
 import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
@@ -10,8 +9,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import com.qa.factory.DriverFactory;
 import com.qa.util.ConfigReader;
-
-import io.cucumber.core.logging.LoggerFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
