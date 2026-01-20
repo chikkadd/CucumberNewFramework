@@ -47,7 +47,7 @@ private WebDriver driver;
     	driver.findElement(loginLink).click();
     	System.out.println("login with "+username+ "and "+password);
     	driver.findElement(emailIDtxt).sendKeys(username);
-    	driver.findElement(passwordtxt).sendKeys(password);
+    	driver.findElement(passwordtxt).sendKeys(username);
     	driver.findElement(loginButton).click();
     	return new CatagoriesPage(driver);
     }

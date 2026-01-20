@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CatagoriesPage {
+public class CatagoriesPage extends BaseActions{
 	private WebDriver driver;
 	
 	private By catagoriesSection = By.cssSelector("div.panel-group>div");
