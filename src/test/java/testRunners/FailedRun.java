@@ -8,6 +8,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(features = {"@target/failedrerun.txt"},
 				 glue = "stepDefinitions",
 				 monochrome = true,
+				 tags = "@smoke",
 				 plugin = {"pretty","rerun:target/failedrerun.txt"})
 
 public class FailedRun extends AbstractTestNGCucumberTests{

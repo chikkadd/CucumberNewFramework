@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(features = "src/test/resources/appFeature/", 
 				glue = "stepDefinitions", 
 				monochrome = true, 
-				tags = "@test",
+				tags = "@smoke",
 				plugin = {"pretty", "html:target/cucumber-reports.html", "json:target/cucumber-reports.json", "rerun:target/failedrerun.txt" })
 
 public class MyTestRunner extends AbstractTestNGCucumberTests

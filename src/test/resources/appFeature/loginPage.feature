@@ -1,5 +1,4 @@
 #Sample Feature Definition Template
-@test
 Feature: Login Page feature
 
  
@@ -8,7 +7,7 @@ Feature: Login Page feature
     When user gets title of the page
     Then page title should be "Automation Exercise"
     
-
+	@test
   Scenario: validate signUp link
   Given user is on login page
   Then verify that signUp button displayed
