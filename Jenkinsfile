@@ -10,7 +10,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'mvn clean test -Dcucumber.filter.tags="@smoke" -DsuiteXmlFile=testng.xml'
+                sh 'mvn clean test -Dsuite="testng" -Dcucumber.filter.tags="@test"'
             }
         }
     }
