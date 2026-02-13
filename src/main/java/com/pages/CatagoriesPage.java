@@ -8,31 +8,31 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class CatagoriesPage extends BaseActions{
-	private WebDriver driver;
+
 	
-	private By catagoriesSection = By.cssSelector("div.panel-group>div");
+	private static final By catagoriesSection = By.cssSelector("div.panel-group>div");
 	
-	public CatagoriesPage(WebDriver driver)
+	/*
+	 * public CatagoriesPage(WebDriver driver) { this.driver=driver;
+	 * 
+	 * }
+	 */
+	public static String getPageTitle()
 	{
-		this.driver=driver;
-		
-		
-	}
-	public String getPageTitle()
-	{
-		return driver.getTitle();
-	}
-	
-	public int getCatagoryCount()
-	{
-		return driver.findElements(catagoriesSection).size();
-		
+		return getCurrentPageTitle();
 	}
 	
-	public List<String> getCatagoriesList()
+	public static int getCatagoryCount()
+	{
+		//return driver.findElements(catagoriesSection).size();
+		List<WebElement> catagories= getElements(catagoriesSection); 
+		return catagories.size();
+	}
+	
+	public static List<String> getCatagoriesList()
 	{
 		List<String> txtCatagories= new ArrayList<>();
-		List<WebElement> catagoriesList=driver.findElements(catagoriesSection);
+		List<WebElement> catagoriesList=getElements(catagoriesSection);
 		//for(WebElement e : catagoriesList)
 		//{
 		//	String text= e.getText();
