@@ -5,7 +5,7 @@ pipeline {
         stage('Test') {
             agent {
                 docker {
-                    image 'maven:3.9.6-eclipse-temurin-17'
+                    image 'selenium/standalone-chrome:latest'
                     reuseNode true
                 }
             }
