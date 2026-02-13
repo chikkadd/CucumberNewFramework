@@ -7,15 +7,13 @@ import org.junit.Assert;
 
 import com.pages.CatagoriesPage;
 import com.pages.LoginPage;
-import com.qa.factory.DriverFactory;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 public class CatagoriesSteps {
-	private LoginPage loginpage=new LoginPage(DriverFactory.getDriver());
-	private CatagoriesPage catagoriesPage;
+	
 	private String title;
 	
 	
@@ -25,14 +23,12 @@ public class CatagoriesSteps {
 	List<Map<String, String>> credentials=	dataTable.asMaps();
 	    String username=credentials.get(0).get("username");
 	    String password=credentials.get(0).get("password");
-	    DriverFactory.getDriver().get("https://automationexercise.com/");
-	    System.out.println("URL loaded ");
-	    catagoriesPage=loginpage.doLogin(username, password);
+	    LoginPage.doLogin(username, password);
 	}
 
 @Given("user is on dashboard page")
 public void user_is_on_dashboard_page() {
-	title=catagoriesPage.getPageTitle();
+	title=CatagoriesPage.getPageTitle();
 }
 
 @Then("dashboard page title should be {string}")
@@ -47,7 +43,7 @@ public void below_sub_catagories_should_be_displayed(DataTable sectionTable) {
 	System.out.println(Expectedsectionlist.get(0));
 	System.out.println(Expectedsectionlist.get(1));
 	System.out.println("Expected account list "+Expectedsectionlist);
-	List<String> actualList=catagoriesPage.getCatagoriesList();
+	List<String> actualList=CatagoriesPage.getCatagoriesList();
 	System.out.println("actual catagories are "+actualList);
 	Assert.assertTrue(Expectedsectionlist.equals(actualList));
     
@@ -55,9 +51,9 @@ public void below_sub_catagories_should_be_displayed(DataTable sectionTable) {
 
 @Then("number of catagories should be {int}")
 public void number_of_catagories_should_be(Integer expectedCount) {
-	System.out.println("actual count ="+catagoriesPage.getCatagoryCount());
+	System.out.println("actual count ="+CatagoriesPage.getCatagoryCount());
 	System.out.println("actual count ="+expectedCount);
-   Assert.assertTrue(catagoriesPage.getCatagoryCount()==expectedCount);
+   Assert.assertTrue(CatagoriesPage.getCatagoryCount()==expectedCount);
 }
 
 

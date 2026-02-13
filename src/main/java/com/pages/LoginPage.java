@@ -1,68 +1,82 @@
 package com.pages;
-
-import java.util.List;
+import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
-public class LoginPage {
-private WebDriver driver;
+public class LoginPage extends BaseActions{
+
 	
 	//1. By locators
-	private By loginLink = By.xpath("//a[contains(text(),'Signup / Login')]");
-    private By emailIDtxt = By.xpath("//div[h2[text()='Login to your account']]/form/input[2]");
-    private By passwordtxt = By.xpath("//div[h2[text()='Login to your account']]/form/input[3]");
-    private By loginButton = By.xpath("//div[h2[text()='Login to your account']]//button");
+	private static final By loginLink = By.xpath("//a[@href='/login']");
+    private static final By emailIDtxt = By.xpath("//div[h2[text()='Login to your account']]/form/input[2]");
+    private static final By passwordtxt = By.xpath("//div[h2[text()='Login to your account']]/form/input[3]");
+    private static final By loginButton = By.xpath("//div[h2[text()='Login to your account']]//button");
+    private static final By btnDeleteAccoutn = By.xpath("//a[contains(@href,'delete_account')]");
+    private static final By lblInvalidLoginErrorMessage = By.xpath("//form[@action='/login']/p");
     
     //construction of the page class
     
-    public LoginPage(WebDriver driver)
-    {
-    	this.driver=driver;
-    }
     
     //behavior of the pages in form of method
     
-    public String getLoginPageTitle()
+    public static String getLoginPageTitle()
     {
-    	return driver.getTitle();
+    	return getCurrentPageTitle();
     }
     
-    public boolean isForgotPasswordLinkDisplayed()
+    public static boolean isForgotPasswordLinkDisplayed()
     {
-    	return driver.findElement(loginLink).isDisplayed();
+    	//return driver.findElement(loginLink).isDisplayed();
+    	return isElementDisplayed(loginLink);
     }
-    public void EnterUserName(String username)
+    public static void EnterUserName(String username)
     {
-    	driver.findElement(emailIDtxt).sendKeys(username);
+    	enterText(emailIDtxt, username);
     }
-    public void EnterPassword(String password)
+    public static void EnterPassword(String password)
     {
-    	driver.findElement(passwordtxt).sendKeys(password);
+    	//driver.findElement(passwordtxt).sendKeys(password);
+    	enterText(passwordtxt, password);
     }
     
-    public CatagoriesPage doLogin(String username, String password)
+    public static void doLogin(String username, String password)
     {
-    	driver.findElement(loginLink).click();
+    	//driver.findElement(loginLink).click();
+    	click(loginLink);
     	System.out.println("login with "+username+ "and "+password);
-    	driver.findElement(emailIDtxt).sendKeys(username);
-    	driver.findElement(passwordtxt).sendKeys(username);
-    	driver.findElement(loginButton).click();
-    	return new CatagoriesPage(driver);
+    	//driver.findElement(emailIDtxt).sendKeys(username);
+    	//driver.findElement(passwordtxt).sendKeys(password);
+    	//driver.findElement(loginButton).click();
+    	//return new CatagoriesPage(driver);
+    	
+    	enterText(emailIDtxt, username);
+    	enterText(passwordtxt, password);
+    	click(loginButton);
     }
     
-    public void clickSignInButton()
+    public static void clickSignInButton()
     {
-    	driver.findElement(loginButton).click();
+    	//.findElement(loginButton).click();
+    	click(loginButton);
     }
-    public void clickSignInLink()
+    public static void clickSignInLink()
     {
-    	driver.findElement(loginLink).click();
+    	//driver.findElement(loginLink).click();
+    	click(loginLink);
     }
-    public void clickLoginLink(String password)
+
+    
+    public static boolean isDeleteAccountDisplayed()
     {
-    	driver.findElement(loginLink).click();
+    	return isElementDisplayed(btnDeleteAccoutn);
+    }
+    
+    public static void validateInValideLoginErrorMessage(String expectedMessage)
+    {
+    	Assert.assertTrue(isElementDisplayed(lblInvalidLoginErrorMessage));
+    	Assert.assertEquals(getText(lblInvalidLoginErrorMessage), expectedMessage,"error message does not match");
     }
 
 }
