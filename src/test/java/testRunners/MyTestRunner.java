@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(features = "src/test/resources/appFeature/", glue = "stepDefinitions", monochrome = true,
 		// tags = "@test",
 		plugin = { "pretty", "html:target/cucumber-reports.html", "json:target/cucumber-reports.json",
-				"rerun:target/failedrerun.txt" })
+				"rerun:target/failedrerun.txt",  "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" })
 
 public class MyTestRunner extends AbstractTestNGCucumberTests {
 	@Override

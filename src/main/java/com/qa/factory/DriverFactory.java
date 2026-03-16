@@ -1,5 +1,7 @@
 package com.qa.factory;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,9 +11,14 @@ import org.openqa.selenium.safari.SafariDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
+	
+	private DriverFactory()
+	{
+		System.out.println("this is privae constructor");
+	}
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
-	public WebDriver init_driver(String browser, String url) {
+	public static WebDriver init_driver(String browser, String url) {
 		System.out.println("browser value is :" + browser);
 
 		if (browser.equalsIgnoreCase("chrome")) {
@@ -27,6 +34,7 @@ public class DriverFactory {
 			// Use a specific Chrome profile (optional)
 			// Replace with your actual Chrome user data directory path
 			// options.addArguments("user-data-dir=/path/to/your/chrome/profile");
+			
 
 			tlDriver.set(new ChromeDriver(options));
 
@@ -44,6 +52,7 @@ public class DriverFactory {
 
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
+		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		getDriver().get(url);
 
 		return getDriver();
